@@ -5,9 +5,13 @@
 - npx tsc -b
 - npm i prisma
 - npx prisma init
-### create your models then migrate your db (generate and run the sql on the db)
+#### create your models then migrate your db (generate and run the sql on the db)
 - npx prisma migrate dev
-### enter the name of the migration
+#### enter the name of the migration
 Note - using psql to check db `psql -h localhost -d postgres -U postgres`
-### generate client to work with the dbs
+#### generate client to work with the dbs
 - npx prisma generate
+#### start using the client
+- `import { PrismaClient } from '@prisma/client';`
+- const prismaClient = new PrismaClient();
+- const users = await prismaClient.user.findMany();

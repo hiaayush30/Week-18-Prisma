@@ -6,7 +6,6 @@ const prismaClient = new PrismaClient();
 
 app.get('/', async (req: Request, res: Response) => {
     try {
-        await prismaClient.$connect();
         const user=await prismaClient.user.create({
             data: {
                 username: 'John',
