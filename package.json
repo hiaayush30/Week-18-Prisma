@@ -9,6 +9,9 @@
     "start": "npx tsc -b && node ./dist/index.js"
   },
   "keywords": [],
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "author": "",
   "license": "ISC",
   "type": "commonjs",

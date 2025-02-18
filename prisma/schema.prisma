@@ -13,7 +13,8 @@ model User {
   password String
   age      Int
   todos    Todos[] //defines one to many relationship
-  //if not written
+  // todos field not created in actual db but for you to work with prisma easily
+  // if not written
   // Prisma won’t know that a User has many Todos.
   // You won’t be able to fetch all Todos for a given User using Prisma queries like: 
   // await prisma.user.findUnique({

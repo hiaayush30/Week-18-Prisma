@@ -8,7 +8,7 @@ app.get('/', async (req: Request, res: Response) => {
     try {
         const user=await prismaClient.user.create({
             data: {
-                username: 'John',
+                username: 'Wick',
                 age: 20,
                 password: '123'
             },
@@ -17,7 +17,11 @@ app.get('/', async (req: Request, res: Response) => {
                 password:false
             }
         })
-        const users = await prismaClient.user.findMany();
+        const users = await prismaClient.user.findMany({
+            include:{
+                todos:true //prisma will fetch it using the foreign key in todos table
+            }
+        });
         res.json({
             message: 'server running',
             users: users,
