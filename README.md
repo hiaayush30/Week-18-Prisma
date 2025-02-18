@@ -5,6 +5,6 @@
 - npx tsc -b
 - npm i prisma
 - npx prisma init
--- create your models then migrate your db (generate and run the sql on the db)
+### create your models then migrate your db (generate and run the sql on the db)
 - npx prisma migrate dev
--- enter the name of the migration
+### enter the name of the migration
