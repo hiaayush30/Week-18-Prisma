@@ -15,3 +15,11 @@ model User {
   password String
   age Int
 }
+
+model Todos {
+  id Int @id @default(autoincrement())
+  title String
+  description String? //can be null
+  done Boolean @default(false)
+  user_id Int
+}
