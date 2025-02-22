@@ -7,12 +7,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+//data types - String, Int,Float,Decimal.Boolean,DateTime,Json,Bytes //for Scaler fields 
+// modifiers - ?,[]
+
+//block attributes @@ ie applies to whole model
+//inline attributes @ ie applies to that field  @id,@unique,@default,@updatedAt,@map @ignore @db @relation
+
+//attribute function autoincrement() uuid() cuid() nanoid() now()
+
 model User {
   id       Int     @id @default(autoincrement())
-  username String  @unique
-  password String
+  username String  @unique //automatic indexing if marked unique @db.VarChar(10) //only 10 chars
+  password String //@map("pw") the db field name will be pw
   age      Int
-  todos    Todos[] //defines one to many relationship
+  todos    Todos[] 
+  
+  // newField String? @ignore will be created in db but ignored in ts definitions
+
   // todos field not created in actual db but for you to work with prisma easily
   // if not written
   // Prisma won’t know that a User has many Todos.
@@ -21,6 +32,10 @@ model User {
   // where: { id: 1 },
   // include: { todos: true },  // ✅ Only works if `todos Todos[]` is defined in `User`
   // });
+
+  // @@index([username,id])
+  // @@unique([username,age])  //combination of username and age must be unique
+  // @@map("UserNaamKaTable")
 }
 
 // In Prisma, relationships must be explicitly defined in both models (both sides of the relation).
